@@ -1,0 +1,4 @@
+﻿generator client { provider = "prisma-client-js" }
+datasource db { provider = "postgresql" url = env("DATABASE_URL") }
+model User { id String @id @default(cuid()); email String @unique; name String?; role String @default("user"); createdAt DateTime @default(now()); updatedAt DateTime @updatedAt }
+model Post { id String @id @default(cuid()); title String; content String?; status String @default("draft"); authorId String; createdAt DateTime @default(now()); updatedAt DateTime @updatedAt }
